@@ -6,10 +6,13 @@ const startGameBtn = document.querySelector(".js_startGameBtn");
 const messageBox = document.querySelector('.js_messageBox');
 const playerScore = document.querySelector(".js_player");
 const machineScore = document.querySelector(".js_machine");
+const resetBtn = document.querySelector('.js_resetBtn');
 
 // DATOS
 let playerWins = 0;
 let computerWins = 0;
+// const originalPlayerScore = playerScore;
+// const originalMachineScore = machineScore;
 
 // FUNCIONES
 
@@ -77,7 +80,6 @@ const handleClickPlayGame = (event) => {
 
     if ( computerWins === 10 || playerWins === 10 ) {
         gameSelect.disabled = true;
-        const resetBtn = document.querySelector('.js_resetBtn');
         resetBtn.classList.remove('hidden');
     }
 };
@@ -85,3 +87,15 @@ const handleClickPlayGame = (event) => {
 // EVENTOS
 
 startGameBtn.addEventListener('click', handleClickPlayGame);
+
+
+resetBtn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+
+    const form_Exercise = document.querySelector('.form__reviewExercise');
+    form_Exercise.reset();
+
+    renderResults(`Vamos a Jugar!`);
+    playerScore.innerHTML = `Jugador: 0 `;
+    machineScore.innerHTML = `Computadora: 0 `;
+});
