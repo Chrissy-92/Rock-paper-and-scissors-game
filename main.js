@@ -99,5 +99,6 @@ resetBtn.addEventListener('click', (ev) => {
     // renderResults(`Vamos a Jugar!`);
     // playerScore.innerHTML = `Jugador: 0 `;
     // machineScore.innerHTML = `Computadora: 0 `;
-    // resetBtn.classList.add('hidden');
 });
+
+resetBtn.classList.add('hidden');
