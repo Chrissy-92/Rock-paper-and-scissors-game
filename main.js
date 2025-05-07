@@ -3,77 +3,85 @@
 // QUERY SELECTOR
 const gameSelect = document.querySelector(".js__gameSelect");
 const startGameBtn = document.querySelector(".js_startGameBtn");
-const markerBtn = document.querySelector('.js_markerBtn');
+const messageBox = document.querySelector('.js_messageBox');
 const playerScore = document.querySelector(".js_player");
 const machineScore = document.querySelector(".js_machine");
 
+// DATOS
+let playerWins = 0;
+let computerWins = 0;
+
 // FUNCIONES
 
-const getOptionSelectedByUser = () => {
-  const player = gameSelect.value;
-  return player;
-};
-
-const gameSelectPlayer = () => {
-  const player = getOptionSelectedByUser();
-
-  if (player === "piedra") {
-    console.log("el jugador ha elegido piedra");
-  } else if (player === "papel") {
-    console.log("el jugador ha elegido papel");
-  } else if (player === "tijera") {
-    console.log("el jugador ha elegido tijera");
-  }
-};
-
 function getRandomNumber(max) {
-  return Math.ceil(Math.random() * max);
-}
-
-const gameSelectMachine = () => {
-  const machine = getRandomNumber;
-
-  if (getRandomNumber <= 3) {
-    console.log("la máquina ha elegido piedra");
-  } else if (getRandomNumber >= 7) {
-    console.log("la máquina ha elegido papel");
-  } else {
-    console.log("la máquina ha elegido tijera");
-  }
+    return Math.ceil(Math.random() * max);
 };
 
-const marker = markerBtn;
-
-const finalScore = () => {
-  if (
-    gameSelectPlayer === "piedra" && gameSelectMachine === "tijera",
-    gameSelectPlayer === "papel" && gameSelectMachine === "piedra",
-    gameSelectPlayer === "tijera" && gameSelectMachine === "papel") {
-    marker.innerHTML = ('¡Has Ganado 🎉!');
-    playerScore.innerHTML = "Jugador: ";
-  } else if (
-    gameSelectPlayer === "piedra" && gameSelectMachine === "papel",
-    gameSelectPlayer === "papel" && gameSelectMachine === "tijera",
-    gameSelectPlayer === "tijera" && gameSelectMachine === "piedra") {
-    marker.innerHTML = ('Has perdido, suerte para la próxima 👋🏻');
-    machineScore.innerHTML = 'Computadora: ';
-  } else if (
-    gameSelectPlayer === "piedra" && gameSelectMachine === "piedra",
-    gameSelectPlayer === "papel" && gameSelectMachine === "papel",
-    gameSelectPlayer === "tijera" && gameSelectMachine === "tijera") {
-    marker.innerHTML = ('Empate! 🙌🏻');  
-}};
+const renderResults = (message) => {
+    messageBox.innerHTML = message;
+};
 
 // FUNCIONES DE EVENTOS
 
-const handleClickGame = (event) => {
+const handleClickPlayGame = (event) => {
   event.preventDefault();
 
-  gameSelectPlayer();
-  gameSelectMachine();
-  finalScore();
+  //1. Comienza el juego  
+  
+  //1.1 Captura la elección de la jugadora.
+  const player = gameSelect.value;
+  
+  //1.2 Generar la elección del ordenador
+
+  //1.2.1 Genera un número aleatorio
+  const randomNumber = getRandomNumber(9);
+
+  //1.2.2 Transformar el número a una jugada
+
+    let computerChoise;
+
+    if (randomNumber <= 3) {
+        console.log("la máquina ha elegido piedra");
+        computerChoise = 'piedra';
+    } else if (randomNumber >= 7) {
+        console.log("la máquina ha elegido papel");
+        computerChoise = 'papel';
+    } else {
+        console.log("la máquina ha elegido tijera");
+        computerChoise = 'tijera';
+    }
+
+    console.log(player, randomNumber, computerChoise);
+    
+    // 1.3 Comparar elecciones
+        
+    if( player === "piedra" && computerChoise === "tijera" ||
+        player === "papel" && computerChoise === "piedra" ||
+        player === "tijera" && computerChoise === "papel"
+    ) {
+        renderResults('¡Has Ganado 🎉!');
+        playerWins++;
+        playerScore.innerHTML = `Jugador: ${playerWins} `;
+    } else if (
+        player === "piedra" && computerChoise === "papel" ||
+        player === "papel" && computerChoise === "tijera" ||
+        player === "tijera" && computerChoise === "piedra"
+    ) {
+        renderResults('Has perdido, suerte para la próxima 👋🏻');
+        computerWins++;
+        machineScore.innerHTML = `Computadora: ${computerWins} `;
+    } else if (
+        player === computerChoise) {
+        renderResults('Empate! 🙌🏻');  
+    }
+
+    if ( computerWins === 10 || playerWins === 10 ) {
+        gameSelect.disabled = true;
+        const resetBtn = document.querySelector('.js_resetBtn');
+        resetBtn.classList.remove('hidden');
+    }
 };
 
 // EVENTOS
 
-startGameBtn.addEventListener("click", handleClickGame);
+startGameBtn.addEventListener('click', handleClickPlayGame);

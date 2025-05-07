@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./main.css/styles.css">
     <title>Juego Piedra, Papel y Tijera</title>
 </head>
@@ -13,17 +16,23 @@
 
         <form class="form__reviewExercise">
         <select class="js__gameSelect">
-            <option value="placeholder">Seleccione su jugada</option>
-            <option value="piedra">Piedra</option>
-            <option value="papel">Papel</option>
-            <option value="tijera">Tijera</option>
+            <option value="no-option" disabled selected>Seleccione su jugada</option>
+            <option value="piedra">Piedra ⛰️</option>
+            <option value="papel">Papel 🧻</option>
+            <option value="tijera">Tijera ✂️</option>
         </select>
-        <button class="js_startGameBtn">Jugar</button>
+        <button class="js_startGameBtn badge">Jugar!</button>
         </form>
         <br>
-        <label class="js_markerBtn">Vamos a Jugar!</label>
+        <div class="mt-3s">
+        <h2 class="js_messageBox badge">Vamos a Jugar!</h2>
+        </div>
         <h3 class="js_player score">Jugador: 0</h3>
         <h3 class="score js_machine">Computadora: 0</h3>
+
+    <!-- Reload the game -->
+     <button class="js_resetBtn badge hidden">Reiniciar Juego</button>
+
     </main> 
     <script src="./main.js"></script>
 </body>

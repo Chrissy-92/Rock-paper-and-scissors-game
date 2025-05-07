@@ -5,12 +5,13 @@
 }
 
 :root{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
 }
 
 body {
     height: 100vh;
-    background-color: plum;
+    background-color: mediumaquamarine;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,8 +25,25 @@ body {
     align-items: center;
     width: 60%;
     background-color: white;
-    border: solid 3px cyan;
+    border: solid 3px darkcyan;
+    border-radius: 5px;
     line-height: 2.5;
+}
+
+.js_startGameBtn {
+    border: solid 3px green;
+    background-color: lightgreen;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.mt-3s {
+   border: solid 3px purple;
+   background-color: mediumpurple;
+   border-radius: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+   color: white; 
 }
 
 .js_markerBtn {
@@ -34,4 +52,16 @@ body {
 
 .score {
     color: gray;
+}
+
+.js_resetBtn {
+    margin-bottom: 15px;
+    border: solid 3px darkcyan;
+    background-color: lightblue;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.hidden {
+    display: none;
 }
