@@ -28,6 +28,10 @@ body {
     line-height: 2.5;
 }
 
+.js_markerBtn {
+    text-align: center;
+}
+
 .score {
     color: gray;
 }
