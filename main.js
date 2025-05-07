@@ -92,11 +92,12 @@ startGameBtn.addEventListener('click', handleClickPlayGame);
 resetBtn.addEventListener('click', (ev) => {
     ev.preventDefault();
 
-    const form_Exercise = document.querySelector('.form__reviewExercise');
-    form_Exercise.reset();
+    window.location.reload();
+    // const form_Exercise = document.querySelector('.form__reviewExercise');
+    // form_Exercise.reset();
 
-    renderResults(`Vamos a Jugar!`);
-    playerScore.innerHTML = `Jugador: 0 `;
-    machineScore.innerHTML = `Computadora: 0 `;
-    resetBtn.classList.add('hidden');
+    // renderResults(`Vamos a Jugar!`);
+    // playerScore.innerHTML = `Jugador: 0 `;
+    // machineScore.innerHTML = `Computadora: 0 `;
+    // resetBtn.classList.add('hidden');
 });
